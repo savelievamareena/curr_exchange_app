@@ -1,0 +1,24 @@
+a {
+    text-decoration: none;
+    color: #777D71;
+}
+
+.nav_wrapper {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1rem;
+    border-right: 1px solid #777D71;
+    min-height: 100%;
+    width: 260px;
+
+}
+
+.nav_pending {
+    color: #777D71;
+}
+
+.nav_active {
+    color: #BBD38B;
+}
