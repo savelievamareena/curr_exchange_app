@@ -1,6 +1,4 @@
 .curr_list_wrapper {
-    display: flex;
-    flex-direction: column;
     padding: 1rem;
 }
 
@@ -9,8 +7,6 @@
     flex-direction: row;
     gap: 20px;
     align-items: center;
-    margin-left: 0;
-    justify-content: left;
 }
 
 .default_currency_container select {
@@ -25,10 +21,14 @@
 .curr_list_container {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    padding-top: 1rem;
+    flex-direction: column;
+    max-height: 550px;
 }
 
 .curr_el_in_list {
-    flex: 1 1 300px;
+    width: 220px;
+    margin-right: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

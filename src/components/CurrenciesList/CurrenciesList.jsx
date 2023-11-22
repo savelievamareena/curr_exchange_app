@@ -30,17 +30,15 @@ export default function CurrenciesList() {
                         setRates(prevState => {
                             let tempRates = [];
                             for(const key in data.rates) {
-                                if(key !== defaultCurr.code) {
-                                    tempRates.push({code: key, rate: data.rates[key]});
-                                }
+                                tempRates.push({code: key, rate: data.rates[key]});
                             }
-                            return tempRates;
+                            return tempRates.sort((a, b) => a.code.localeCompare(b.code));
                         });
                     }
                 })
         }
 
-        setLoading(false);
+        setTimeout(()=> {setLoading(false)}, 1000)
     }, [currenciesWithDescriptions, defaultCurr])
 
     const baseCurrencyOptions = currWithTitles.map((curr, i) => {
@@ -52,7 +50,7 @@ export default function CurrenciesList() {
     const currInList = rates.map((currObj, i) => {
         return (
             <div className="curr_el_in_list" key={i}>
-                {currObj.code}: {currObj.rate < 0.01 ? currObj.rate.toFixed(4) : currObj.rate.toFixed(2)}
+                <span>{currObj.code}:</span> <span>{currObj.rate < 0.01 ? currObj.rate.toFixed(4) : currObj.rate.toFixed(2)}</span>
             </div>
         )
     })

@@ -1,6 +1,5 @@
 .layout_wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: left;
     min-height: 100%;
 }
