@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import "./Converter.css";
 import {CurrContext} from "../../context/currenciesContext.js";
+import {useIMask} from 'react-imask';
 
 export default function Converter() {
     const currenciesWithDescriptions = useContext(CurrContext);
@@ -14,6 +15,11 @@ export default function Converter() {
 
     const [amountToConvert, setAmountToConvert] = useState("");
     const [conversionResult, setConversionResult] = useState(0);
+
+    const {
+        ref,
+        value
+    } = useIMask({mask: Number, min: 0.0000001, max: 9999999999}, /* { onAccept, onComplete } */);
 
     React.useEffect(() => {
         if(currenciesWithDescriptions.length > 0) {
@@ -86,7 +92,7 @@ export default function Converter() {
         <main className="main_content_wrapper">
             <div className="currencies_selects_container">
                 <div>
-                    <input type="text" placeholder="Enter amount" value={amountToConvert} onChange={(e) => handleAmountChange(e.currentTarget.value)} />
+                    <input ref={ref} type="text" placeholder="Enter amount" value={value} onChange={(e) => handleAmountChange(e.currentTarget.value)} />
                 </div>
                 <div className="select_label_container">
                     <select name="from" id="currency_from" onChange={handleChangeFrom} value={currenciesFrom[selectedFromIndex]?.code}>
